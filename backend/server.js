@@ -15,12 +15,6 @@ const messagesRouter = require('./routes/messages');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Render部署配置
-if (process.env.NODE_ENV === 'production') {
-    // 生产环境下自动初始化数据库
-    const initDb = require('./database/init');
-}
-
 // 中间件配置
 app.use(cors()); // 允许跨域请求
 app.use(bodyParser.json()); // 解析JSON请求体
