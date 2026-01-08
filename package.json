@@ -1,0 +1,17 @@
+{
+  "name": "treehole-app",
+  "version": "2.0.0",
+  "description": "班级树洞 - Node.js + SQLite 全栈应用",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "cd backend && npm install && npm run init-db && npm start",
+    "build": "cd backend && npm install",
+    "dev": "cd backend && npm run dev"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "keywords": ["nodejs", "express", "sqlite", "web-app"],
+  "author": "信管专业课程项目",
+  "license": "MIT"
+}

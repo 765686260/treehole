@@ -15,6 +15,12 @@ const messagesRouter = require('./routes/messages');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Render部署配置
+if (process.env.NODE_ENV === 'production') {
+    // 生产环境下自动初始化数据库
+    const initDb = require('./database/init');
+}
+
 // 中间件配置
 app.use(cors()); // 允许跨域请求
 app.use(bodyParser.json()); // 解析JSON请求体
@@ -47,6 +53,7 @@ app.get('/api', (req, res) => {
         name: '班级树洞 API',
         version: '2.0.0',
         description: 'Node.js + SQLite RESTful API',
+        status: 'running',
         endpoints: {
             'GET /api/messages': '获取所有留言',
             'POST /api/messages': '创建新留言',
@@ -54,6 +61,14 @@ app.get('/api', (req, res) => {
             'GET /api/messages/:id': '获取指定留言'
         },
         timestamp: new Date().toISOString()
+    });
+});
+
+// 健康检查端点
+app.get('/health', (req, res) => {
+    res.status(200).json({ 
+        status: 'healthy', 
+        timestamp: new Date().toISOString() 
     });
 });
 

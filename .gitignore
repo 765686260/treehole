@@ -4,8 +4,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Database
-backend/database/messages.db
+# Database (保留数据库文件用于部署)
+# backend/database/messages.db
 
 # Environment variables
 .env
