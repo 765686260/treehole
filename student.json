@@ -1,0 +1,11 @@
+{  
+  "status": "success",  "data": {  "users": [  {  
+        "id": 1,  
+        "courses": [  {  
+            "name": "数据库",  
+            "scores": {"midterm": 85, "final": 90}  }  
+        ]  
+      }  
+    ]  
+  }  
+}

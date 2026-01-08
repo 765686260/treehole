@@ -1,0 +1,38 @@
+/* 
+  style.css
+  配合 Bootstrap 使用，仅编写少量自定义样式
+*/
+
+/* 自定义动画：让新留言淡入显示 */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 应用于 JS 生成的卡片 */
+.msg-card-animation {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+/* 
+  删除按钮交互逻辑：
+  默认透明度为 0 (看不见但占位)，悬停在卡片上时变为 1 (显示)
+*/
+.btn-delete-hover {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.card:hover .btn-delete-hover {
+    opacity: 1;
+}
+
+/* 
+  移动端优化：手机上没法“悬停”，所以手机上直接显示删除按钮
+  利用 Bootstrap 的断点逻辑 (md 以下)
+*/
+@media (max-width: 768px) {
+    .btn-delete-hover {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,180 @@
+/* --- 全局变量与重置 --- */
+:root {
+    --primary-color: #4a90e2; /* 主色调：天空蓝 */
+    --bg-color: #f4f7f6;      /* 背景色：淡灰 */
+    --card-bg: #ffffff;       /* 卡片背景：白 */
+    --text-color: #333333;    /* 正文颜色 */
+    --gray-text: #888888;     /* 辅助文字颜色 */
+    --danger-color: #e74c3c;  /* 删除按钮颜色：红 */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* --- 布局容器 --- */
+.container {
+    max-width: 800px; /* 限制最大宽度，适合阅读 */margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- 顶部导航 --- */
+.navbar {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.navbar h1 {
+    font-size: 1.5rem;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    font-weight: normal;
+    opacity: 0.8;
+    margin-left: 10px;
+}
+
+/* --- 发布输入卡片 --- */
+.input-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+    border: 1px solid #eee;
+}
+
+.input-card h3 {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    resize: none; /* 禁止拖拽大小 */font-size: 1rem;
+    outline: none;
+    transition: border 0.3s;
+}
+
+textarea:focus {
+    border-color: var(--primary-color);
+}
+
+.action-bar {
+    display: flex;
+    justify-content: space-between; /* 两端对齐 */align-items: center;
+    margin-top: 10px;
+}
+
+#charCount {
+    font-size: 0.85rem;
+    color: var(--gray-text);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #357abd;
+}
+
+/* --- 留言列表区 --- */
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.refresh-tip {
+    font-size: 0.8rem;
+    color: var(--gray-text);
+}
+
+.message-list {
+    list-style: none;
+}
+
+/* --- 单条留言卡片（重点教学CSS） --- */
+.message-card {
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    border-left: 4px solid var(--primary-color); /* 左侧装饰线 */animation: fadeIn 0.5s ease; /* 简单的入场动画 */display: flex;
+    flex-direction: column;
+}
+
+.msg-content {
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+    word-break: break-all; /* 防止长单词撑破布局 */
+}
+
+.msg-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--gray-text);
+    border-top: 1px solid #f0f0f0;
+    padding-top: 8px;
+}
+
+.btn-delete {
+    color: var(--danger-color);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.85rem;
+    opacity: 0; /* 默认隐藏删除按钮 */transition: opacity 0.2s;
+}
+
+/* 只有鼠标悬停在卡片上时，才显示删除按钮 */
+.message-card:hover .btn-delete {
+    opacity: 1;
+}
+
+.btn-delete:hover {
+    text-decoration: underline;
+}
+
+/* 底部页脚 */
+footer {
+    text-align: center;
+    color: var(--gray-text);
+    font-size: 0.9rem;
+    margin: 40px 0;
+}
+
+/* 动画定义 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

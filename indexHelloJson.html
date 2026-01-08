@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JSON获取演示</title>
+    <style>
+        .news-item {
+            border-bottom: 1px dashed #ccc;
+            padding: 10px;
+        }
+
+        .date {
+            color: #888;
+            font-size: 0.9em;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>学院新闻列表</h2><button id="loadBtn">加载新闻</button>
+    <ul id="newsList"></ul>
+    <script>document.getElementById('loadBtn').addEventListener('click', () => {
+            // 演示：去拿 data.json 的数据
+            fetch('data.json')
+                .then(response => response.json()) // 第一步：解析JSON
+                .then(data => {
+                    console.log("拿到数据了：", data);
+                    const list = document.getElementById('newsList');
+                    list.innerHTML = ''; // 清空列表// 第二步：遍历数据生成HTML
+                    data.forEach(item => {
+                        const li = document.createElement('li');
+                        li.className = 'news-item';
+                        li.innerHTML = `<span>${item.title}</span> <span class="date">${item.date}</span>`;
+                        list.appendChild(li);
+                    });
+                })
+                .catch(err => console.error("出错了", err));
+        });
+    </script>
+</body>
+
+</html>
